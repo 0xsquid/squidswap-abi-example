@@ -45,22 +45,22 @@ async function main() {
   const approveTx = await (await approveToken(srcAUSDC, signer, squidAddress)).wait();
   console.log(approveTx);
   
-  // const AMOUNT_INPUT_POS = 196; // length of tradeData (32) + token in (32) + amount in (32) + router (32) + length of data (32) + 36
-  // const traceId = ethers.utils.id(uuidv4());
-  // const squidContract = await ethers.getContractAt(squidSwapAbi, squidAddress, signer);
-  // const tx = await (await squidContract.sendTrade(
-  //   destChain,
-  //   "aUSDC",
-  //   aUSDCAmmout,
-  //   destTradeData,
-  //   traceId,
-  //   recipientAddress,
-  //   AMOUNT_INPUT_POS,
-  //   {
-  //     value: BigInt(5e6),
-  //   }
-  // )).wait()
-  // console.log(tx)
+  const AMOUNT_INPUT_POS = 196; // length of tradeData (32) + token in (32) + amount in (32) + router (32) + length of data (32) + 36
+  const traceId = ethers.utils.id(uuidv4());
+  const squidContract = await ethers.getContractAt(squidSwapAbi, squidAddress, signer);
+  const tx = await (await squidContract.sendTrade(
+    destChain,
+    "aUSDC",
+    aUSDCAmmout,
+    destTradeData,
+    traceId,
+    recipientAddress,
+    AMOUNT_INPUT_POS,
+    {
+      value: BigInt(5e6),
+    }
+  )).wait()
+  console.log(tx)
 };
 
 main().catch((error) => {

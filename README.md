@@ -30,7 +30,11 @@ So make sure you have ETH and wrapped ETH in your wallet.
 ### send
 
 Send native axlUSDC (wrapped USDC) token to the destination chain
+requires aUSDC token in user wallet.
 
+```shell
+npx hardhat run scripts/send.ts
+```
 
 ### tradeSend
 
@@ -38,4 +42,13 @@ Swaps token and send axlUSDC (wrapped USDC) token to the destination chain
 
 ```shell
 npx hardhat run scripts/tradeSend.ts
+```
+
+### sendTrade
+
+Sends native axlUSDC (aUSDC on testnet) token and swaps axlUSDC to WAVAX on destination
+chain.
+
+```shell
+npx hardhat run scripts/sendTrade.ts
 ```
