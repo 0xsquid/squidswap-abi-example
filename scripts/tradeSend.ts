@@ -1,7 +1,6 @@
 import { ethers } from "hardhat";
 import { createTradeData, approveToken } from "./utils";
 import { AUSDC,
-         GATEWAY, 
          ROUTER, 
          SQUID_SWAP_EXECUTABLE,
          WRAPPED_NATIVE_ASSET } from "./constants/address";
