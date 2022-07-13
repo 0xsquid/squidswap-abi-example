@@ -27,6 +27,7 @@ async function main() {
   const srcAUSDC = AUSDC[srcChain]; //aUSDC ethereum
   // to from wrapped native asset on srcChain
   const wrappedAvax = WRAPPED_NATIVE_ASSET[destChain]; //avalance fuji
+  const crossChainTokenSymbol = "aUSDC" //Axelar native crosss chain token
 
   // uniswap trade data will be provided via API call in the future
   const path = [ aUSDC, wrappedAvax] // uniswap trade path
@@ -39,7 +40,7 @@ async function main() {
       );
 
   
-  console.log(recipientAddress);
+  console.log(`User account: ${recipientAddress}`);
   const squidAddress:string = SQUID_SWAP_EXECUTABLE[srcChain as keyof typeof SQUID_SWAP_EXECUTABLE];
   // approve aUSDC for squidswap
   const approveTx = await (await approveToken(srcAUSDC, signer, squidAddress)).wait();
@@ -50,7 +51,7 @@ async function main() {
   const squidContract = await ethers.getContractAt(squidSwapAbi, squidAddress, signer);
   const tx = await (await squidContract.sendTrade(
     destChain,
-    "aUSDC",
+    crossChainTokenSymbol,
     aUSDCAmmout,
     destTradeData,
     traceId,
