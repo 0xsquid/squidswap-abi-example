@@ -27,6 +27,27 @@ Faucets:
 Default each scripts is executed against [Ropsten network](https://ropsten.etherscan.io/).
 So make sure you have ETH and wrapped ETH in your wallet.
 
+If you want to test other than networks as origin (default Ropsten) for a swap or send transaction.
+The example code has to be updated to accomodate for the correct addresses and RPC server.
+
+```javascript
+const srcChain = "ethereum"; //define what is source user starting point
+const destChain = "avalanche"; //define where the funds are send to
+
+const destAUSDC = AUSDC[destChain]; //aUSDC address on destination chain
+const srcAUSDC = AUSDC[srcChain]; //aUSDC address on source chain
+// to from wrapped native asset on srcChain
+const wrappedAvax = WRAPPED_NATIVE_ASSET[destChain]; //wrapped native assets on destination
+const wrappedETH = WRAPPED_NATIVE_ASSET[srcChain]; //wrapped native assets source
+```
+
+Change RPC server for script by passing `--network {ropsten|fuji|moonbase}`
+
+```shell
+##yarn {send|tradesend|sendtrade|tradesendtrade} --network {ropsten|fuji|moonbase}
+yarn send --network moonbase
+```
+
 ### Send
 
 ![Send Usecase](./docs/images/Send.png "Send USDC")
