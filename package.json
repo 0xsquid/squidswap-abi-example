@@ -6,6 +6,12 @@
   "repository": "git@github.com:naladao/squidswap-abi-example.git",
   "author": "0x1NotMe",
   "license": "MIT",
+  "scripts": {
+    "send": "npx hardhat run scripts/send.ts",
+    "tradesend": "npx hardhat run scripts/tradeSend.ts",
+    "sendtrade": "npx hardhat run scripts/sendTrade.ts",
+    "tradesendtrade": "npx hardhat run scripts/sendTradeSend.ts"
+  },
   "dependencies": {
     "@ethersproject/bignumber": "^5.6.2",
     "@nomicfoundation/hardhat-toolbox": "^1.0.1",

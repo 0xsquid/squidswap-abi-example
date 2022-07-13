@@ -27,16 +27,41 @@ Faucets:
 Default each scripts is executed against [Ropsten network](https://ropsten.etherscan.io/).
 So make sure you have ETH and wrapped ETH in your wallet.
 
-### send
+If you want to test other than networks as origin (default Ropsten) for a swap or send transaction.
+The example code has to be updated to accomodate for the correct addresses and RPC server.
 
-Send native axlUSDC (wrapped USDC) token to the destination chain
+```javascript
+const srcChain = "ethereum"; //define what is source user starting point
+const destChain = "avalanche"; //define where the funds are send to
+
+const destAUSDC = AUSDC[destChain]; //aUSDC address on destination chain
+const srcAUSDC = AUSDC[srcChain]; //aUSDC address on source chain
+// to from wrapped native asset on srcChain
+const wrappedAvax = WRAPPED_NATIVE_ASSET[destChain]; //wrapped native assets on destination
+const wrappedETH = WRAPPED_NATIVE_ASSET[srcChain]; //wrapped native assets source
+```
+
+Change RPC server for script by passing `--network {ropsten|fuji|moonbase}`
+
+```shell
+##yarn {send|tradesend|sendtrade|tradesendtrade} --network {ropsten|fuji|moonbase}
+yarn send --network moonbase
+```
+
+### Send
+
+![Send Usecase](./docs/images/Send.png "Send USDC")
+
+Send native USDC/axlUSDC (wrapped USDC) token to the destination chain
 requires aUSDC token in user wallet.
 
 ```shell
 npx hardhat run scripts/send.ts
 ```
 
-### tradeSend
+### TradeSend
+
+![TradeSend Usecase](./docs/images/TradeSend.png "TradeSend")
 
 Swaps token and send axlUSDC (wrapped USDC) token to the destination chain
 
@@ -44,11 +69,24 @@ Swaps token and send axlUSDC (wrapped USDC) token to the destination chain
 npx hardhat run scripts/tradeSend.ts
 ```
 
-### sendTrade
+### SendTrade
+
+![SendTrade Usecase](./docs/images/SendTrade.png "SendTrade")
 
 Sends native axlUSDC (aUSDC on testnet) token and swaps axlUSDC to WAVAX on destination
 chain.
 
 ```shell
 npx hardhat run scripts/sendTrade.ts
+```
+
+### SendTradeSend
+
+![SendTradeSend Usecase](./docs/images/SendTradeSend.png "SendTradeSend")
+
+Swaps WETH to aUSDC and bridges assets to destination chain. On destination chains
+assets will be swapped again from aUSDC to WAVAX.
+
+```shell
+npx hardhat run scripts/sendTradeSend.ts
 ```

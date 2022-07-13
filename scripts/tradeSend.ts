@@ -23,6 +23,7 @@ async function main() {
   // to axlUSDC on soure chain (required for squid transfer)
   // user will receive aUSDC (axelar USDC) on destChain
   const aUSDC = AUSDC[srcChain]; //aUSDC ropsten
+  const crossChainTokenSymbol = "aUSDC" //Axelar native crosss chain token
 
   // uniswap trade data will be provided via API call in the future
   const path = [ wrappedETH, aUSDC ] // uniswap trade path
@@ -34,7 +35,7 @@ async function main() {
       );
 
   const recipientAddress:String = await signer.getAddress();
-  console.log(recipientAddress);
+  console.log(`User account: ${recipientAddress}`);
   const squidAddress:string = SQUID_SWAP_EXECUTABLE[srcChain as keyof typeof SQUID_SWAP_EXECUTABLE];
   const approveTx = await (await approveToken(wrappedETH,signer, squidAddress)).wait();
   console.log(approveTx);
@@ -43,7 +44,7 @@ async function main() {
   const tx = await (await squidContract.tradeSend(
     destChain,
     recipientAddress,
-    "aUSDC",
+    crossChainTokenSymbol,
     srcTradeData
   )).wait()
   console.log(tx)
