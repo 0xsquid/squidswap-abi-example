@@ -27,16 +27,20 @@ Faucets:
 Default each scripts is executed against [Ropsten network](https://ropsten.etherscan.io/).
 So make sure you have ETH and wrapped ETH in your wallet.
 
-### send
+### Send
 
-Send native axlUSDC (wrapped USDC) token to the destination chain
+![Send Usecase](./docs/images/Send.png "Send USDC")
+
+Send native USDC/axlUSDC (wrapped USDC) token to the destination chain
 requires aUSDC token in user wallet.
 
 ```shell
 npx hardhat run scripts/send.ts
 ```
 
-### tradeSend
+### TradeSend
+
+![TradeSend Usecase](./docs/images/TradeSend.png "TradeSend")
 
 Swaps token and send axlUSDC (wrapped USDC) token to the destination chain
 
@@ -44,11 +48,24 @@ Swaps token and send axlUSDC (wrapped USDC) token to the destination chain
 npx hardhat run scripts/tradeSend.ts
 ```
 
-### sendTrade
+### SendTrade
+
+![SendTrade Usecase](./docs/images/SendTrade.png "SendTrade")
 
 Sends native axlUSDC (aUSDC on testnet) token and swaps axlUSDC to WAVAX on destination
 chain.
 
 ```shell
 npx hardhat run scripts/sendTrade.ts
+```
+
+### SendTradeSend
+
+![SendTradeSend Usecase](./docs/images/SendTradeSend.png "SendTradeSend")
+
+Swaps WETH to aUSDC and bridges assets to destination chain. On destination chains
+assets will be swapped again from aUSDC to WAVAX.
+
+```shell
+npx hardhat run scripts/sendTradeSend.ts
 ```
