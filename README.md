@@ -56,7 +56,7 @@ Send native USDC/axlUSDC (wrapped USDC) token to the destination chain
 requires aUSDC token in user wallet.
 
 ```shell
-npx hardhat run scripts/send.ts
+yarn send
 ```
 
 ### TradeSend
@@ -66,7 +66,7 @@ npx hardhat run scripts/send.ts
 Swaps token and send axlUSDC (wrapped USDC) token to the destination chain
 
 ```shell
-npx hardhat run scripts/tradeSend.ts
+yarn tradesend
 ```
 
 ### SendTrade
@@ -77,16 +77,16 @@ Sends native axlUSDC (aUSDC on testnet) token and swaps axlUSDC to WAVAX on dest
 chain.
 
 ```shell
-npx hardhat run scripts/sendTrade.ts
+yarn sendtrade
 ```
 
-### SendTradeSend
+### TradeSendTrade
 
-![SendTradeSend Usecase](./docs/images/SendTradeSend.png "SendTradeSend")
+![TradeSendTrade Usecase](./docs/images/SendTradeSend.png "TradeSendTrade")
 
 Swaps WETH to aUSDC and bridges assets to destination chain. On destination chains
 assets will be swapped again from aUSDC to WAVAX.
 
 ```shell
-npx hardhat run scripts/sendTradeSend.ts
+yarn tradesendtrade
 ```
