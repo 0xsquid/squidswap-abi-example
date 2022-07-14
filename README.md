@@ -1,7 +1,7 @@
 # Squidswap ABI Example Project
 
 This projects demonstrates the interation into squidswap
-using the contract ABI. This is ment to be a early access pre-view.
+using the contract ABI. This is meant to be a early access pre-view.
 We are currently developing an API to simplifiy trade data generation
 as well as an SDK which bundles required contract interactions.
 
