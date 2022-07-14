@@ -88,9 +88,5 @@ Swaps WETH to aUSDC and bridges assets to destination chain. On destination chai
 assets will be swapped again from aUSDC to WAVAX.
 
 ```shell
-<<<<<<< HEAD
 yarn tradesendtrade
-=======
-yarn sendtradesend
->>>>>>> 4a5aa1f1a8a110c32f61416fdda92aef5bf16aab
 ```
